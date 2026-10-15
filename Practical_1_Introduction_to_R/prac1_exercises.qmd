@@ -2,6 +2,10 @@
 title: "Practical 1 - Exercise 3"
 author: "Eve Dawes"
 ---
+```{r}
+library(tidyverse)
+library(gt)
+```
 
 ```{r}
 round(3.14159)
@@ -38,5 +42,31 @@ num_cells_before_1<-5415
 num_cells_before_2<-8123
 num_cells_after_1<-1432
 num_cells_after_2<-7543
+```
+```{r}
+#combine into vectors
+cell_ID<-c(cell_ID_1,cell_ID_2)
+treated <- c(treated_1,treated_2)
+n_before <- c(num_cells_before_1,num_cells_before_2)
+n_after <- c(num_cells_after_1,num_cells_after_2)
+```
+```{r}
+all_my_pets <- c("dog", "horse", "guinea pig", "chicken", "cat")
+my_only_bird <- all_my_pets[4]
+print(my_only_bird)
+```
+```{r}
+# for example
+df <- tibble(
+  cell_ID = c("CX1", "CX2"),
+  treated = c(TRUE, FALSE),
+  num_cells_before = c(5415, 8123),
+  num_cells_after = c(1432, 7543)
+)
+
+gt(df)
+```
+```{r}
+
 ```
 
