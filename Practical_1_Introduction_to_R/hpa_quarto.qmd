@@ -1,0 +1,18 @@
+---
+title: "Exercise - Analysis in Quarto"
+author: "Eve Dawes"
+---
+We are finding out the total number of genes with regionally elevated expression in the forebrain region, this area includes the cerebral cortex, basal ganglia, thalamus and hypothalamus.
+Human:
+```{r}
+sum(180, 83, 57, 110)
+```
+Pig:
+```{r}
+sum(109, 157, 31, 45)
+```
+Mouse:
+```{r}
+sum(55, 185, 60, 98)
+```
+Humans have the highest number of genes with regionally elevated expression.
