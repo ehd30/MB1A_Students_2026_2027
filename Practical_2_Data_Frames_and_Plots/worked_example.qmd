@@ -79,24 +79,39 @@ result <- input_vec |>
 print(result)
 ```
 
-
-## Quarto
-
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
-
-## Running Code
-
-When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
-
 ```{r}
-1 + 1
+bird_migration_grouped <- bird_migration_exc |> group_by(Site)
+
+glimpse(bird_migration_grouped)
+
+lat_df <- bird_migration_grouped |>
+  summarise(Highest_Lat_Stopover = max(Stopover_Latitude, na.rm = TRUE))
+
+gt(lat_df)
+
+lat_df <- bird_migration_grouped |>
+  summarise(
+    Highest_Lat_Stopover = max(Stopover_Latitude, na.rm = TRUE),
+    Lowest_Lat_Stopover = min(Stopover_Latitude, na.rm = TRUE),
+    Mean_Lat_Stopover = mean(Stopover_Latitude, na.rm = TRUE),
+    Highest_Lat_Winter = max(Winter_Latitude, na.rm = TRUE),
+    Lowest_Lat_Winter = min(Winter_Latitude, na.rm = TRUE),
+    Mean_Lat_Winter = mean(Winter_Latitude, na.rm = TRUE)
+  )
+
+gt(lat_df)
+
+bird_migration_grouped <- bird_migration_exc |> group_by(Site)
+
+bird_migration_summary <- bird_migration_grouped |> summarise( Stopover_Longitude = median(Stopover_Longitude, na.rm = TRUE),
+    Stopover_Latitude = median(Stopover_Latitude, na.rm = TRUE),
+    Iberian_Longitude = median(Iberian_Longitude, na.rm = TRUE),
+    Iberian_Latitude = median(Iberian_Latitude, na.rm = TRUE),
+    Westmost_Longitude = median(Westmost_Longitude, na.rm = TRUE),
+    Westmost_Latitude = median(Westmost_Latitude, na.rm = TRUE),
+    Winter_Longitude = median(Winter_Longitude, na.rm = TRUE),
+    Winter_Latitude = median(Winter_Latitude, na.rm = TRUE)
+  )
+gt(bird_migration_summary)
 ```
 
-You can add options to executable code like this 
-
-```{r}
-#| echo: false
-2 * 2
-```
-
-The `echo: false` option disables the printing of code (only output is displayed).
